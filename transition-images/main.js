@@ -1,36 +1,24 @@
-const images = document.querySelectorAll('.image');
+const images = document.getElementsByClassName('image')
 
+function expand(item) {
+    item.style.width = '70%'
+    item.style.transition = '200ms'
 
-images.forEach(img => {
-    function expand() {
-        img.style.width = '50%'
-        img.style.transition = '100ms'
-        counter++;
+}
+
+function collapse(item) {
+    item.style.width = '10%'
+    item.style.transition = '200ms'
+}
+
+for (const image of images) {
+    image.onclick = () => {
+        if (image.style.width === '' || image.style.width === '10%') {
+            expand(image)
+        } else {
+            collapse(image)
+        }
     }
-
-    function collapse() {
-        img.style.width = '10%'
-        img.style.transition = '100ms'
-        counter--;
-    }
-
-    let counter = 0;
-
-    switch (counter) {
-        case 0:
-            img.onclick = () => {
-                expand();
-                console.log(counter)
-            }
-            break;
-
-        case 1:
-            img.onclick = () => {
-                collapse();
-                console.log(counter)
-            }
-            break;
-    }
+}
 
 
-})
